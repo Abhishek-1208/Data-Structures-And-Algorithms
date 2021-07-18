@@ -1,8 +1,12 @@
+/* 
+@Abhishek 1910991168
+
+Program to find sqrt of a number(N) upto given precision(p).
+
+Code Language -  C 
+*/
 #include <stdio.h>
-#include <math.h>
-double adjustPrecision(double num, int precision) {
-	return floor(pow(10, precision) * num) / pow(10, precision);
-}
+
 int main() {
 	int num, precision;
 	printf("Enter the Number: ");
@@ -30,6 +34,6 @@ int main() {
 		ans -= addingFactor;
 	}
 	
-	printf("Square root of %d is %lf", num, adjustPrecision(ans,precision));
+	printf("\nSquare root of %d is %0.20g", num, ans);
 	
 }
