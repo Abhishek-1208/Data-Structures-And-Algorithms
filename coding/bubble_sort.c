@@ -1,7 +1,7 @@
 /**
  * program to analyze bubble sort speed on various inputs 
  * compilation: gcc bubble_sort.c
- * Execution: /coding/bubble_sort.c
+ * Execution: Data-Structures-And-Algorithms/coding/bubble_sort.c
  * @Abhishek (1910991168) 
  * 25/07/2021
  * Assignemnt: 2
