@@ -1,7 +1,7 @@
 /**
  * program to compute square root of a number with given precision
  * compilation: gcc file_name.c
- * Execution: /coding/squareRoot.c
+ * Execution: Data-Structures-And-Algorithms/coding/squareRoot.c
  * @Abhishek (1910991168) 
  *19/07/2021
 Assignemnt: 1
