@@ -1,4 +1,12 @@
-// program to convert hexadecimal to decimal number
+/**
+ * program to convert hexadecimal to decimal number
+ * compilation: gcc program to convert hexadecimal to decimal number.c
+  Execution: Data-Structures-And-Algorithms/coding/program to convert hexadecimal to decimal number.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
+
 #include <stdio.h>
 
 //return length of entered string as return value after taking input from user
