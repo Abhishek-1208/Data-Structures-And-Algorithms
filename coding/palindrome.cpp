@@ -1,3 +1,4 @@
+//program to check whether given string is palindrome or not ignoring white spaces and lowercase and uppercase conditions
 #include <stdio.h>
 
 //return length of entered string as return value after taking input from user
