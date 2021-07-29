@@ -1,4 +1,11 @@
-//program to check if the pattern is present at the end of string or not
+/**
+ * program to check if the pattern is present at the end of string or not
+ * compilation: gcc strend.c
+  Execution: Data-Structures-And-Algorithms/coding/strend.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
 #include<stdio.h>
 //return length of entered string as return value
 int input_string(char *str)  {
