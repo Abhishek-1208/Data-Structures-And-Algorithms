@@ -1,4 +1,6 @@
-#include<stdio.h>
+//program to find the rightmost occurence of given pattern in the given string
+#include <stdio.h>
+ 
 //return length of entered string as return value
 int input_string(char *str)  {
 	char temp;
@@ -14,7 +16,8 @@ int input_string(char *str)  {
 	return len;
 }
 
-
+//function to find the rightmost occurence of given pattern
+//return starting index where rightmost occurence found ..if there is no occurence ..then it will return -1
 int strrindex(char *str, int len1, char *pat, int len2) {
     int res = -1;
 
@@ -22,12 +25,14 @@ int strrindex(char *str, int len1, char *pat, int len2) {
     {
     	
     	int j = i, k = 0;
-    	while( j < len1 && k < len2  && str[j] == pat[k]) {
+    	//comparing pattern with given string starting from ith position
+	while( j < len1 && k < len2  && str[j] == pat[k]) {
     		j++,k++;
-		}
-    	
-		if( k > 0 && pat[k] == '\0')
+	}
+    	//if the whole pattern is traversed sucessfully ..it means patter is present and note down its occurence
+	if(k == len2) {
             res = i;
+	}
     
 	}
     return res;
@@ -42,6 +47,7 @@ int main() {
 	printf("Enter the patter to be searched: ");
 	int len2 = input_string(pat);
 
+	//calling the function to get the appropriate index if pattern is present
 	int index = strrindex(str, len1, pat, len2);
 	
 	if(index == -1) {
