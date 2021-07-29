@@ -32,7 +32,7 @@ int is_palindrome(char *str, int len) {
 	while(l < r) {
 		//ignore in case of white space
 		if(str[l] == ' ') {
-			l++;
+			l++; 
 		}
 		else if(str[r] == ' ') {
 			r--;
