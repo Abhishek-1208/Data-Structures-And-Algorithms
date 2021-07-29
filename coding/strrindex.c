@@ -1,4 +1,11 @@
-//program to find the rightmost occurence of given pattern in the given string
+/**
+ * program to find the rightmost occurence of given pattern in the given string
+ * compilation: gcc strrindex.c
+  Execution: Data-Structures-And-Algorithms/coding/strrindex.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
 #include <stdio.h>
  
 //return length of entered string as return value
