@@ -1,4 +1,11 @@
-//program to print pyramid of given length
+/**
+ * program to print pyramid of given length
+ * compilation: gcc pyramid.c
+  Execution: Data-Structures-And-Algorithms/coding/pyramid.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
 #include <stdio.h>
 int main() {
 	printf("Enter height of pyramid: ");
