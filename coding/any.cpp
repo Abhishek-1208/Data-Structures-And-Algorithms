@@ -32,7 +32,7 @@ int is_present_in_2nd_string(char *str, int len, char x) {
 		if(str[i] == x) {
 			return 1;
 		}
-	}
+	} 
 	return 0;
 }
 
