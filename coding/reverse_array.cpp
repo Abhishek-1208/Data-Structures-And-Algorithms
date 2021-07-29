@@ -1,4 +1,11 @@
-//program to reverse given array
+/**
+ * program to reverse given array
+ * compilation: gcc reverse.c
+  Execution: Data-Structures-And-Algorithms/coding/reverse.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
 #include <stdio.h>
 
 //function to swap given 2 values
