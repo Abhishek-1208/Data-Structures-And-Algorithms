@@ -1,4 +1,14 @@
-//program to find first occurence of any character of string2 in string1
+/**
+ * program to find first occurence of any character of string2 in string1
+ * compilation: gcc file_name.c
+ * Execution: Data-Structures-And-Algorithms/coding/program to find first occurence of any character of string2 in string1.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
+
+
+
 #include <stdio.h>
 
 //return length of entered string after taking input from user
