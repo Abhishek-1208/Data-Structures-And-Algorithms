@@ -1,4 +1,12 @@
-//program to check whether given string is palindrome or not ignoring white spaces and lowercase and uppercase conditions
+  
+/**
+ * program to check whether given string is palindrome or not ignoring white spaces and lowercase and uppercase conditions
+ * compilation: gcc palindrome.c
+  Execution: Data-Structures-And-Algorithms/coding/palindrome.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
 #include <stdio.h>
 
 //return length of entered string as return value after taking input from user
