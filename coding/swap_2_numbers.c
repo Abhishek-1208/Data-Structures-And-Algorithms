@@ -1,4 +1,11 @@
-//program to swap given 2 numbers without using 3rd variable
+/**
+ *program to swap given 2 numbers without using 3rd variable
+ * compilation: gcc swap_2_numbers.c
+ * Execution: Data-Structures-And-Algorithms/coding/swap_2_numbers.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
 #include <stdio.h>
 
 int main() {
