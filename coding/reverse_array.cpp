@@ -1,9 +1,14 @@
+//program to reverse given array
 #include <stdio.h>
+
+//function to swap given 2 values
 void swap(int *a, int *b) {
 	int temp = *a;
 	*a = *b;
 	*b = temp;
 }
+
+//helping function to reverse the passed array using 2 pointer approach
 void reverse(int *a, int n) {
 	int l = 0, r = n - 1;
 	while(l < r) {
@@ -27,7 +32,7 @@ int main() {
 		printf("%d ",a[i]);
 	}
 	printf("\n");
-	
+	//calling the function to reverse the array
 	reverse(a,n);
 	
 	printf("Array after reverseal: ");
