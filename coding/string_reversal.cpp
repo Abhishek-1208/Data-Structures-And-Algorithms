@@ -1,4 +1,11 @@
-//program to reverse the given string 
+/**
+ * program to reverse the given string 
+ * compilation: gcc string_reversal.c
+  Execution: Data-Structures-And-Algorithms/coding/string_reversal.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
 #include <stdio.h>
 
 //return length of entered string as return value
