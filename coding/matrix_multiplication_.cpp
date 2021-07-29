@@ -1,26 +1,33 @@
 #include <stdio.h> 
 #include <stdlib.h>
+
+//helping function to find the matrix multiplication of given 2 matrices
 int ** multiply_matrices(int **a, int n1, int m1, int **b, int n2, int m2, int *res_row, int *res_col) {
 	
+	//condition to check whether matrix multiplication is possible or not for the given 2 matrices
 	if(m2 != n1) {
 		return nullptr;
 	}
 	
 	*res_row = n1;
 	*res_col = m2;
+	//dynamically creating the resultant matrix
 	int ** res = (int**)malloc(*res_row * sizeof(int));
+	
 	for(int i = 0; i < *res_row; i++) {
+		
+		//providing the required number of columms in current row
 		res[i] = (int *)malloc(*res_col * sizeof(int));
+		
 		for(int j = 0; j < *res_col; j++) {
 			res[i][j] = 0;
-            for (int k = 0; k < m1; k++) {
-                res[i][j] += a[i][k] * b[k][j];
-            }
+			//calculating value of current cell using by multiplying ith row of first matrix with jth column of second matrix
+			for (int k = 0; k < m1; k++) {
+				res[i][j] += a[i][k] * b[k][j];
+			}
 		}
 	}
-	
-	
-	
+	//returning the final matrix
 	return res;
 }
 
@@ -54,11 +61,12 @@ int main() {
 	
 	int res_row = -1, res_col = -1;
 	int **res = multiply_matrices(a, n1, m1, b, n2, m2, &res_row, &res_col);
+	//res_row = -1 means that multiplication is not possible
 	if(res_row == -1) {
 		printf("Matrix multiplication is not possible for the given matrices\n");
-		
 	}
 	else {
+		//printing the content in case multiplication of the given matrices is possible
 		printf("resultant matrix after multiplication is given below:\n");
 		for(int i = 0; i < res_row; i++) {
 			for(int j = 0; j < res_col; j++) {
