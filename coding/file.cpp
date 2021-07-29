@@ -1,4 +1,12 @@
-//program to read lines from input file and printing lines whose length is greater than 81
+/**
+ * program to read lines from input file and printing lines whose length is greater than 81
+ * compilation: gcc program_to_read_lines_from_input_file_and_printin_lines_whose_length_is_greater_than_81.c
+  Execution: Data-Structures-And-Algorithms/coding/program_to_read_lines_from_input_file_and_printin_lines_whose_length_is_greater_than_81.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
+
 #include <stdio.h>
 int main() {
 	
