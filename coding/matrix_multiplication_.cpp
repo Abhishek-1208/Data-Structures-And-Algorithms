@@ -1,3 +1,4 @@
+// program to multiply given 2 matrices
 #include <stdio.h> 
 #include <stdlib.h>
 
