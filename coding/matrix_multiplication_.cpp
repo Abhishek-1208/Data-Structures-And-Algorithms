@@ -1,4 +1,11 @@
-// program to multiply given 2 matrices
+/**
+ * program to multiply given 2 matrices
+ * compilation: gcc program to multiply given 2 matrices.c
+  Execution: Data-Structures-And-Algorithms/coding/program to multiply given 2 matrices.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
 #include <stdio.h> 
 #include <stdlib.h>
 
