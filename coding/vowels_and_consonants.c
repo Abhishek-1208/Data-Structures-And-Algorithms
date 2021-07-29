@@ -1,4 +1,12 @@
-//program to count number of vowels and consonants(rest of values in string)
+  
+/**
+ *program to count number of vowels and consonants(rest of values in string)
+ * compilation: gcc vowels_and_consonants.c
+ * Execution: Data-Structures-And-Algorithms/coding/vowels_and_consonants.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
 #include <stdio.h>
 
 //return length of entered string as return value after taking input from user
