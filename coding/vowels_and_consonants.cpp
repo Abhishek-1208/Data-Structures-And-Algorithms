@@ -1,20 +1,9 @@
+//program to count number of vowels and consonants(rest of values in string)
 #include <stdio.h>
 
-
-
-int isVowel(char x, char *vowels) {
-	for(int i = 0; i < 10; ++i) {
-		if(vowels[i] == x) {
-			return 1;
-		}
-	}
-	return 0;
-}
-
-int main() {
-	char str[50], temp;
-	char vowels[] = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
-	printf("Enter the string: ");
+//return length of entered string as return value after taking input from user
+int input_string(char *str)  {
+	char temp;
 	int len = 0;
 	while(temp = getchar()) {
 		if(temp =='\n') {
@@ -24,10 +13,32 @@ int main() {
 		else
 			str[len++] = temp; 
 	}
+	return len;
+}
+
+//check if the passed character is vowel or not
+int isVowel(char x, char *vowels) {
+	for(int i = 0; i < 10; ++i) {
+		// if x is equal to any of the 10 vowels ..return true
+		if(vowels[i] == x) {
+			return 1;
+		}
+	}
+	//reaching here means it is not equal to any of vowel ..hence it is a consonants
+	return 0;
+}
+
+int main() {
+	
+	char vowels[] = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+	char str[50];
+	printf("Enter the string: ");
+	int len = input_string(str);
 	
 	int count_of_vowels = 0;
 	
 	for(int i = 0; i < len; i++) {
+		//if the current character is vowel, increment the count
 		if(isVowel(str[i], vowels))
 			count_of_vowels++;
 	}
