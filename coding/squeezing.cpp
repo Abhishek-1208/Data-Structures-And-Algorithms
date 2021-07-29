@@ -1,4 +1,11 @@
-//program to modify a string after squeezing it with some other string
+/**
+ * program to modify a string after squeezing it with some other string
+ * compilation: gcc squeezing.c
+  Execution: Data-Structures-And-Algorithms/coding/squeezing.c
+ * @Abhishek (1910991168) 
+ * 29/07/2021
+ * Assignemnt: 3
+*/
 #include <stdio.h>
 
 //return length of entered string as return value
