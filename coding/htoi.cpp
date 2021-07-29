@@ -1,3 +1,4 @@
+// program to convert hexadecimal to decimal number
 #include <stdio.h>
 
 //return length of entered string as return value after taking input from user
