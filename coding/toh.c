@@ -1,27 +1,33 @@
 /**
- * program to find greatest common divisor of 2 numbers
- * compilation: gcc gcd.c
- * Execution: Data-Structures-And-Algorithms/coding/gcd.c
+ * program to solve tower of hanoi puzzle
+ * compilation: gcc toh.c
+ * Execution: Data-Structures-And-Algorithms/coding/toh.c
  * @Abhishek (1910991168) 
  * 03/08/2021
  * Assignemnt: 5
 */
 
+
 #include <stdio.h>
 
-//function to find gcd of two given numbers
-// Time: O(log N)
-// Space: O(1)
-int gcd(int a, int b) {
-	
-	if(b == 0)
-		return a;
-		
-	return gcd(b, a % b);
-	
+// recursive function to print the steps and count total moves
+int TOH(int n, char src, char aux, char des) {
+	int moves = 0;
+	if(n >= 1) {
+		moves += TOH(n - 1, src, des, aux);
+		printf("%c to %c\n", src, des);
+		moves += TOH(n - 1,aux, src, des);
+		moves++;
+	}
+	return moves;
 }
+
 int main() {
-	int a, b;
-	scanf("%d %d", &a, &b);
-	printf("Gcd of given two numbers is %d\n", gcd(a, b));
+	int n;
+	printf("Enter the number of rings in the first tower: ");
+	scanf("%d", &n);
+	int moves = TOH(n, 'A', 'B', 'C');
+	printf("total moves taken are %d \n", moves);
+	
+	
 }
