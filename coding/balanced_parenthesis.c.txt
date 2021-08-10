@@ -1,0 +1,124 @@
+/**
+ * Program to check  whether given expression is Balanced or not .
+ * Compilation : gcc balanced_parenthesis.c
+ * Execution : ./a.out
+ * @Abhishek ( 1910991168 )  
+ * 10/08/2021
+ * Assignment 7 - Stacks and Queues.
+ *
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+//implementing the stack so as to solve the problem easily
+
+int top;	//store element at top of stack
+int capacity;	// capacity of our stack
+char *stack;	// to store the content
+
+//function to initialize our stack 
+void init(int size) {
+	stack = (char *)malloc(size * sizeof(char));
+	capacity = size;
+	top = -1;
+}
+
+// to resize in case of overflow
+void resize() {
+	stack = (char *)realloc(stack, 2 * capacity);
+	capacity *= 2;
+}
+
+//check whether stack is empty or not
+int empty() {
+	return top == -1;
+}
+
+//check whether stack is full or not
+int full() {
+	return top == capacity - 1;
+}
+
+//push the element at top of stack
+void push(char x) {
+	//if full then resize the stack first
+	if(full()) {
+		resize();
+	}
+	stack[++top] = x;
+}
+//to pop the top element of stack
+void pop() {
+	if(empty()) {
+		printf("Underflow\n");
+		exit(1);
+	}
+	top--;
+}
+
+//to get topmost character
+char on_top() {
+	if(empty()) {
+		printf("no available element\n");
+		exit(1);
+	}
+	return stack[top];
+}
+
+// returns length of string
+int strlen(char *str) {
+	int len = 0;
+	while(str[len] != '\0')
+		len++;
+	return len;	
+}
+//checks whether character is open bracket or not
+int is_open(char x) {
+	return x == '(' || x == '[' || x== '{';
+}
+
+//check matching pair of braces
+int is_matched(char open, char close) {
+	if(open == '(') {
+		return close == ')';
+	}
+	if(open == '[') {
+		return close == ']';
+	}
+	if(open == '{') {
+		return close == '}';
+	}
+}
+//function to check balancing of expresssion
+int is_balanced(char *str) {
+	init(51);
+	int len = strlen(str);
+	for(int i = 0; i < len; i++) {
+                //if open bracket .. simply push to stack
+		if(is_open(str[i])) {
+			push(str[i]);
+		}
+		else {
+			//if stack is empty or top is not matching return false;
+			if(empty() || is_matched(on_top(), str[i]) == 0) {
+				return 0;
+			}
+
+			pop();
+		}
+	}
+	//return true iff stack is empty
+	return empty();
+}
+
+int main() {
+	char str[50];
+	printf("Enter the expression: ");
+	scanf("%s", str);
+	if(is_balanced(str)) {
+		printf("YES\n");
+	}
+	else {
+		printf("NO\n");
+	}
+}

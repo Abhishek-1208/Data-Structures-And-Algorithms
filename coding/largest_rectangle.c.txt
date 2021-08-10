@@ -1,0 +1,149 @@
+/**
+ * program to find largest rectangle in histogram
+ * compilation: gcc largest_rectangle.c
+ * Execution: ./a.out
+ * @Abhishek (1910991168) 
+ * 10/08/2021
+ * Assignemnt: 7
+*/
+
+#include <stdio.h>
+#include<stdlib.h>
+
+//structure to represent our stack
+struct stack {
+	int top, capacity, *arr;
+};
+
+//initializing our stack
+struct stack* init() {
+	struct stack *st = ( struct stack *)malloc(sizeof( struct stack));
+	st -> arr = (int *)malloc(5 * sizeof(int));
+	st -> capacity = 5;
+	st -> top = 0;
+	return st;
+}
+
+
+//resizing in case our stack has reached its maximum capacity
+void resize(struct stack *st) {
+	
+	st = (struct stack*)realloc(st, st -> capacity * 2);
+	st -> capacity *= 2;
+}
+
+//to check if stack is empty or not
+int empty(struct stack *st) {
+	return st -> top == 0;
+}
+
+//to get current size of stack
+int size(struct stack *st) {
+	return st -> top;
+}
+//to chek if the stack has reached its maximum capacity or not
+int full(struct stack *st) {
+	return st -> top == st -> capacity;
+}
+
+//to push the element to the top of stack
+void push(struct stack *st, int x) {
+	//resize first if stack is full
+	if(full(st)) {
+		resize(st);
+	}
+	st -> arr[st -> top] = x;
+	st -> top++;
+}
+
+//to pop the element at top
+void pop(struct stack *st) {
+	//first check if stack is empty
+	if(empty(st)) {
+		printf("stack underflow\n");
+		exit(1);
+	}
+	else {
+		st -> top--;
+	}
+	
+}
+
+//to get the top element of stack
+int top(struct stack *st) {
+	//check first if stack is empty or not
+	if(empty(st)) {
+		printf("Error!...stack is empty\n");
+		exit(1);
+	}
+	else {
+		return st -> arr[st -> top - 1];
+	}
+}
+//find the immediate next smaller for every array element
+void find_next_smaller(int *arr, int *next, int n) {
+	
+	struct stack *st;
+	st = init();
+	for(int i = n; i >= 1; i--) {
+		//keep poping until a smaller element is not encountered
+		while(!empty(st) &&  arr[i] <= arr[top(st)] ) {
+			pop(st);
+		}
+		next[i] = empty(st) ? n + 1: top(st);
+		//push current element index
+		push(st, i);
+	}
+	
+}
+
+//find the immediate previous smaller for every array element
+void find_prev_smaller(int *arr, int *prev, int n) {
+	
+	struct stack *st;
+	st = init();
+	for(int i = 1; i <= n; i++) {
+		//keep poping until a smaller element is not encountered
+		while(!empty(st) &&  arr[i] <= arr[top(st)] ) {
+			pop(st);
+		}
+		prev[i] = empty(st) ? 0: top(st);
+		//push current element index
+		push(st, i);
+	}
+	
+}
+//returns maximum of passed two number
+int max(int a, int b) {
+	return a > b ? a : b;
+}
+//find the largest rectangle in given histogram
+int largest_rectangle(int *arr, int n) {
+	
+	int *next = (int *)malloc((n + 1) * sizeof(int));
+	int *prev = (int *)malloc((n + 1) * sizeof(int));
+	//calling function to get required nextsmaller and previous smaller for every element
+	find_next_smaller(arr, next, n);
+	find_prev_smaller(arr, prev, n);
+	
+	int res = 0;
+	for(int i = 1; i <= n; i++) {
+		//calculate answer for each individual building if it is considered in final answer
+		res = max(res, (next[i] - prev[i] - 1) * arr[i]);
+	}
+	
+	return res;
+}
+
+
+int main() {
+	
+	int n;
+	printf("enter the size of array: ");
+	scanf("%d", &n);
+	int *arr = (int *)malloc((n + 1) * sizeof(int));
+	for(int i = 1; i <= n; i++) {
+		scanf("%d", &arr[i]);
+	}
+	printf("largest area of rectangle is %d\n", largest_rectangle(arr, n));
+}
