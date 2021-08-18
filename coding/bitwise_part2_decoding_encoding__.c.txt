@@ -1,0 +1,8 @@
+/**
+ * program to decode base 32 string and then encoding it to base 64
+ * compilation: gcc decoding_encoding.c
+  Execution: Data-Structures-And-Algorithms/coding/decoding_encoding.c
+ * @Abhishek (1910991168) 
+ * 18/08/2021
+ * Assignemnt: 7 (bitwise assignment)
+*/
