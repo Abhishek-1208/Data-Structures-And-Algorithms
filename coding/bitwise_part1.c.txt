@@ -1,0 +1,89 @@
+/**
+ * program to implement bitwise operators without using them directly
+ * compilation: gcc bitwise_part1.c
+  Execution: Data-Structures-And-Algorithms/coding/bitwise_part1.c
+ * @Abhishek (1910991168) 
+ * 18/08/2021
+ * Assignemnt: 7
+*/
+
+#include <stdio.h>
+
+//perform a & b without using &
+int bitAnd(int x, int y){
+    return ~((~x) | (~y));
+}
+
+//perform a ^ b without using ^
+int bitXor(int a, int b) {
+    return ~((~(~a & b) ) & (~(a & ~b)));
+}
+
+// returns the sign of number either 0 - 1 or +1
+int sign(int x) {
+
+   int zero = (( x | (~x + 1)) >> 31) & 1;
+  return (x & 1 << 31) >> 31 | zero;
+
+}
+
+
+//extract kth byte from word n
+int getByte(int n, int k) {
+    //first get the bits to be moved  and perform & with 256 which is equal to 8 set bits in binary i.e 1 byte
+    int pos = k << 3;
+    return (n >> pos) & 0xff;
+}
+
+
+//shift n to the right by k, using a logical shift
+int logicalShift(int n, int k) {
+    return (n >> k) & (~(((1 << 31) >> k) << 1));    
+}
+
+//same as x ? y : z
+int conditional(int x, int y, int z) {
+
+    int is_zero = ~0 + !x;
+    
+    return (z ^ ((y ^ z) & is_zero ) );
+
+}
+
+
+//Compute !x without using !
+int bang(int x) {
+    int temp = (1 + (~x) ) | x;
+    return (temp >> 31) + 1;
+}
+
+
+//Return x with the n bits that begin at position p inverted
+int invert(int x, int p, int n) {
+    //did'nt get the idea yet
+}
+
+
+//driver code to check the call the functions as per need
+int main() {
+   
+
+    printf("BitXor of 4 and 19 : %d\n",bitXor(4,19));
+    
+    printf("Sign(14) = %d ,Sign(-3) = %d\n",sign(14),sign(-3));
+    
+    printf("bang(10) = %d , bang(0) = %d\n", bang(10),bang(0));
+    
+    printf("logicalShift(0x87654321, 3) = 0x%x\n",logicalShift(0x87654321, 3));
+    
+    printf("invert(10,3,4) = %d\n",invert(10,3,4));
+    
+    printf("GetByte(0x12345678, 2) = 0x%x\n",getByte(0x12345678, 2));    
+    
+    printf("BitAnd of 156 and 5 : %d\n",bitAnd(156,5));
+
+    printf("conditional (2, 10, 5) = %d\n",conditional(2, 10, 5));
+    
+    
+
+}
