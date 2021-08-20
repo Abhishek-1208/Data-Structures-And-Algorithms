@@ -1,6 +1,6 @@
 /**
- * program to find kth smallest element in an array
- * compilation: gcc kth_smallest_number.c
+ * program to find first n even fibonacci numbers
+ * compilation: gcc first_n_even_fibo_num.c
  * Execution: ./a.out
  * @Abhishek (1910991168) 
  * 20/08/2021
