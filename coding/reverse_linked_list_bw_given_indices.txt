@@ -1,0 +1,53 @@
+/**
+ * function to reverse list b/w given range
+ * compilation: gcc reverse_linked_list_bw_given_indices.c
+ * Execution: ./a.out
+ * @Abhishek (1910991168) 
+ * 30/08/2021
+ * Assignemnt: Linked List
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+//to reverse given range
+struct ListNode* reverse(struct ListNode *head, int lim) {
+    struct ListNode *start = head, *temp = NULL;
+    
+    while(lim--) {
+        struct ListNode *curr_next = start -> next;
+        start -> next = temp;
+        temp = start;
+        start = curr_next;
+    }
+    
+    head -> next = start;
+    return temp;
+}
+
+struct ListNode* reverseBetween(struct ListNode* head, int left, int right){
+    if(!head || !head -> next) {
+        return head;
+    }
+    // to  ease the task attaching a dummy node at linkedlist front
+    struct ListNode *dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    dummy -> next = head;
+    int pos = 1;
+    struct ListNode *itr = dummy;
+    
+    while(pos < left) {
+        itr = itr -> next;
+        pos++;
+    }
+    
+    struct ListNode *rev = reverse(itr -> next,right - left + 1);
+    //building the connection back after reversing the list
+    itr -> next = rev;
+    
+    return dummy -> next;
+    
+}
