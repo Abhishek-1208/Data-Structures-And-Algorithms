@@ -59,9 +59,13 @@ int bang(int x) {
 }
 
 
-//Return x with the n bits that begin at position p inverted
-int invert(int x, int p, int n) {
-    //did'nt get the idea yet
+int invert(int n, int count, int pos) {
+  
+  int mask = (1 << count) - 1;
+  mask = (mask << (pos - 1));
+  return mask ^ n;
+
+    
 }
 
 
