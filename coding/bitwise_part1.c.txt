@@ -46,9 +46,8 @@ int logicalShift(int n, int k) {
 //same as x ? y : z
 int conditional(int x, int y, int z) {
 
-    int is_zero = ~0 + !x;
-    
-    return (z ^ ((y ^ z) & is_zero ) );
+    int temp = -1 + !x;
+    return z ^ ((y ^ z) & temp);
 
 }
 
