@@ -22,9 +22,9 @@ struct queue {
 
 // to initialize the queue
 struct queue* init() {
-	struct queue *q = (struct queue*) malloc(sizeof(struct queue));
-	q -> start = q -> end = NULL;
-        return q;
+    struct queue *q = (struct queue*) malloc(sizeof(struct queue));
+    q -> start = q -> end = NULL;
+    return q;
 }
 
 // to get new node to store data
