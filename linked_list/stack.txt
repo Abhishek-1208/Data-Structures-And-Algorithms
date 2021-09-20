@@ -1,0 +1,67 @@
+/**
+ * implementing stack using singly Linked List
+ * compilation: gcc stack.c
+ * Execution: ./a.out
+ * @Abhishek (1910991168) 
+ * 30/08/2021
+ * Assignemnt: Linked List
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+//structure for implementing stack
+struct stack {
+    int data;
+    struct stack *next;
+};
+
+// to get new node to store data
+struct stack* getNode(int val) {
+    struct stack *node = (struct stack*)malloc(sizeof(struct stack));
+    node -> data = val;
+    node -> next = NULL;
+    return node;
+}
+
+//returns true if stack is empty
+int empty(struct stack *head) {
+    return head == NULL;
+}
+
+//push the element to the stack
+void push(struct stack **head, int val) {
+    struct stack *node = getNode(val);
+    node -> next = *head;
+    *head = node;
+}
+
+//pop the element from stack if present
+void pop(struct stack **head) {
+    if(empty(*head)) {
+        printf("Underflow\n");
+    }
+    else {
+        struct stack *temp = (*head) -> next;
+        free(*head);
+        *head = temp;
+    }
+}
+
+//return the topmost element if present
+int top(struct stack *head) {
+    if(empty(head)) {
+        printf("Underflow\n");
+        return -1;
+    }
+    return head -> data;
+}
+
+int main() {
+    struct stack *st = NULL;
+    push(&st, 10);
+    push(&st, 20);
+    printf("top is %d\n", top(st));
+    pop(&st);
+    
+}

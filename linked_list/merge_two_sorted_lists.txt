@@ -1,0 +1,55 @@
+/**
+ * function to merge 2 sorted lists in sorted order
+ * compilation: gcc merge_two_sorted_lists.c
+ * Execution: ./a.out
+ * @Abhishek (1910991168) 
+ * 30/08/2021
+ * Assignemnt: Linked List
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+//merging the given two sorted list in sorted manner
+struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2){
+    //created a dummy node to ease the implementation
+    struct ListNode *dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    dummy -> next = NULL;
+    struct ListNode *itr = dummy;
+
+    while(l1 && l2) {
+	// if l1 has less value make connection with it
+        if(l1 -> val < l2 -> val) {
+            itr -> next = l1;
+            l1 = l1 -> next;
+            itr = itr -> next;
+        }
+        //make connection with l2 
+        else {
+            itr -> next = l2;
+            l2 = l2 -> next;
+            itr = itr -> next;
+        }
+    }
+    // pushing remaining elements if any
+    while(l1) {
+        itr -> next = l1;
+        l1 = l1 -> next;
+        itr = itr -> next;
+    }
+
+    // pushing remaining elements if any
+    while(l2) {
+        itr -> next = l2;
+        l2 = l2 -> next;
+        itr = itr -> next;
+    }
+    
+    return dummy -> next;
+    
+}
