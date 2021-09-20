@@ -26,23 +26,20 @@ int input_string(char *str)  {
 //function to find the rightmost occurence of given pattern
 //return starting index where rightmost occurence found ..if there is no occurence ..then it will return -1
 int strrindex(char *str, int len1, char *pat, int len2) {
-    int res = -1;
+	int res = -1;
 
-    for(int i = 0; i < len1; i++)
-    {
-    	
-    	int j = i, k = 0;
-    	//comparing pattern with given string starting from ith position
-	while( j < len1 && k < len2  && str[j] == pat[k]) {
-    		j++,k++;
+	for(int i = 0; i < len1; i++) {
+		int j = i, k = 0;
+		//comparing pattern with given string starting from ith position
+		while( j < len1 && k < len2  && str[j] == pat[k]) {
+			j++,k++;
+		}
+		//if the whole pattern is traversed sucessfully ..it means patter is present and note down its occurence
+		if(k == len2) {
+		    res = i;
+		}
 	}
-    	//if the whole pattern is traversed sucessfully ..it means patter is present and note down its occurence
-	if(k == len2) {
-            res = i;
-	}
-    
-	}
-    return res;
+	return res;
 }
 
 int main() {
