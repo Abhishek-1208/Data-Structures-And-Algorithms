@@ -32,7 +32,7 @@ int input_string(char *str)  {
 
 // returns true if x is an operator
 int is_operator(char x) {
-   return x == '/' || x == '*' || x == '+' || x == '-';
+   	return x == '/' || x == '*' || x == '+' || x == '-';
 }
 
 
@@ -140,29 +140,29 @@ struct string reverse_polish_to_infix(char *str, int len) {
 	for(int i = 0; i < len; i++) {
 		
 		if(str[i] == ' ')
-			continue;
+		     continue;
 		
 		//to peform the current operand.. we need 2 values so we will take 2 values from stack and concatenate them 
 		//then again push the final value to stack for future operations
 		if(is_operator(str[i])) {
-			struct string op1 = st.top();
-            st.pop();
-            struct string op2 = st.top();
-            st.pop();
-            struct string res;
-            res.push_back('(');
-            res.append(op2);
-            res.push_back(str[i]);
-            res.append(op1);
-            res.push_back(')');
-            st.push(res);
-        }
+		    struct string op1 = st.top();
+		    st.pop();
+		    struct string op2 = st.top();
+		    st.pop();
+		    struct string res;
+		    res.push_back('(');
+		    res.append(op2);
+		    res.push_back(str[i]);
+		    res.append(op1);
+		    res.push_back(')');
+		    st.push(res);
+		}
 	    
 	    //if current character is not an operator ..simply push it to stack
-	    else {
-	    	struct string temp;
-	    	temp.push_back(str[i]);
-	    	st.push(temp);
+	    	else {
+	    	    struct string temp;
+	    	    temp.push_back(str[i]);
+	    	    st.push(temp);
 		}
 	    
 	}
