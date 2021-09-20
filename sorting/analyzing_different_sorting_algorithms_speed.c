@@ -59,29 +59,23 @@ void bubble_sort(int *arr, int n) {
 		if(is_swap_performed == 0) {
 			break;
 		}
-		
 	}
 }
 
 
 //function to perform selection sort algo on passed array
 void selection_sort(int *arr, int n) {
-	
-	
 	for (int i = 0; i < n-1; i++){
-    	
 		int min_idx = i;
 		//finding the minimum element in the range A[i...n] 
-        for (int j = i+1; j < n; j++) {
-	        if (arr[j] < arr[min_idx]) {
-	            min_idx = j;
+        	for (int j = i+1; j < n; j++) {
+	        	if (arr[j] < arr[min_idx]) {
+	            		min_idx = j;
 			}
 		}
-     
 		//placing current minimum to its correct position by swapping     
-	    swap(&arr[min_idx], &arr[i]);
+	    	swap(&arr[min_idx], &arr[i]);
 	}
-		
 }
 
 
@@ -91,18 +85,13 @@ void insertion_sort(int *arr, int n) {
 	for(int i = 1; i < n; i++) {
 		int curr_element = arr[i];
 		int j = i;
-		
 		//finding correct position for the current element in the already sorted array [0... i-1]
-		
 		while(j > 0 && arr[j - 1] > curr_element) {
 			arr[j] = arr[j - 1];
 			j--; 
 		} 
-		
 		arr[j] = curr_element;
-	
 	}
-	
 }
 
 
