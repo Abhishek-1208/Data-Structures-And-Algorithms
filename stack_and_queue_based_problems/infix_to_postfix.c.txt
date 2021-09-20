@@ -1,0 +1,151 @@
+/**
+ * Program to convert infix to postfix .
+ * Compilation : gcc infix_to_postfix.c
+ * Execution : ./a.out
+ *
+ * @Abhishek ( 1910991168 )  
+ * 10/08/2021
+ * Assignment 7 - Stacks and Queues.
+ *
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+//implementing the stack so as to solve the problem easily
+
+int top;	//store element at top of stack
+int capacity;	// capacity of our stack
+char *stack;	// to store the content
+
+//function to initialize our stack 
+void init(int size) {
+	stack = (char *)malloc(size * sizeof(char));
+	capacity = size;
+	top = -1;
+}
+
+// to resize in case of overflow
+void resize() {
+	stack = (char *)realloc(stack, 2 * capacity);
+	capacity *= 2;
+}
+
+//check whether stack is empty or not
+int empty() {
+	return top == -1;
+}
+
+//check whether stack is full or not
+int full() {
+	return top == capacity - 1;
+}
+
+//push the element at top of stack
+void push(char x) {
+	//if full then resize the stack first
+	if(full()) {
+		resize();
+	}
+	stack[++top] = x;
+}
+//to pop the top element of stack
+void pop() {
+	if(empty()) {
+		printf("Underflow\n");
+		exit(1);
+	}
+	top--;
+}
+
+//to get topmost character
+char on_top() {
+	if(empty()) {
+		printf("no available element\n");
+		exit(1);
+	}
+	return stack[top];
+}
+
+// to take input string with spaces allowed..returns length of string as return value
+int input_string(char *str)  {
+	char temp;
+	int len = 0;
+	while(temp = getchar()) {
+		if(temp =='\n') {
+			str[len] ='\0';
+			break;
+		}
+		else
+			str[len++] = temp; 
+	}
+	return len;
+}
+// to get operators according to their priority
+int priority(char ch) {
+    // since precedence of '+' & '-' is same
+    if(ch == '+' || ch == '-')
+	return 1;
+    // since precedence of '*' & '/' is same
+    else if(ch == '*' || ch == '/')
+	return 2;
+    else
+        return 3;
+}
+
+//function to convert infix to postfix expression
+char* infix_to_prefix(char *str, int len) {
+	init(51);
+	char *res = (char *)malloc(len * 2 * sizeof(char));
+	int index = 0, i = 0;
+	while(i < len) {
+	    //if space is encountered simply ignore
+	    if(str[i] == ' ') {
+	    
+            }
+	    //if element is operand then push to stack
+	    if(str[i] >= 'A' && str[i] <= 'Z') {
+	        res[index++] = str[i];
+	    }
+	    //push open brackets to stack as well
+	    else if(str[i] == '(') {
+	        push(str[i]);
+	    }
+            //pop all the elements until open bracket is encountered 
+	    else if(str[i] == ')'){
+	        
+		while(on_top() != '(') {
+	            res[index++] = on_top();
+	            pop();
+	        }
+	        pop();
+	        
+	    }
+	    //insert operators according to their priority
+	    else {
+					    	
+		 while(!empty() && priority(str[i]) <= priority(on_top())) {
+        	     res[index++] = on_top();
+        		 pop();
+    		 }
+    	    push(str[i]);
+    	}
+	    i++;
+	}
+	
+	while(!empty()) {
+	    res[index++] = on_top();
+	    pop();
+	}
+	
+	res[index] = '\0';
+	return res;
+	
+}
+
+int main() {
+	char str[50];
+	printf("Enter the infix expression: ");
+	int len = input_string(str);
+	printf("corresponding expression in postfix form is %s",infix_to_prefix(str, len));
+	
+}
