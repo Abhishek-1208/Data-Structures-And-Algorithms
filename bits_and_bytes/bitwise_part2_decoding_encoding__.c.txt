@@ -1,11 +1,11 @@
 /**
  * program to decode base 32 string and then encoding it to base 64
  * compilation: gcc decoding_encoding.c
-  Execution: Data-Structures-And-Algorithms/coding/decoding_encoding.c
+ * Execution: Data-Structures-And-Algorithms/coding/decoding_encoding.c
  * @Abhishek (1910991168) 
  * 18/08/2021
  * Assignemnt: 7 (bitwise assignment)
-*/
+**/
 
 
 
@@ -186,7 +186,6 @@ char* base64_encoder(char *base32) {
     // add the extra padding required
     while(res_idx % 4 != 0) {
         result[res_idx++] = '=';
-        
     }
     
     result[res_idx] = '\0';
