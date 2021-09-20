@@ -35,24 +35,24 @@ void resize(struct queue *q) {
 	
 	//adjustment of element is only needed if last element is present before the first element
 	if(q -> front > q -> last) {
-			//copying the content of the queue to temporary array first
-			
-			int *temp = (int *)malloc(q -> capacity * sizeof(int));
-			int index = 0,start = q -> front;
-			while(start < q -> capacity) {
-				temp[index++] = q -> arr[start++];
-			}
+		//copying the content of the queue to temporary array first
 
-			start = 0;
-			while(start <= q -> last) {
-				temp[index++] = q -> arr[start++];
-			}
-			
-			//copying back the data
-			start = 0;
-			while(start < q -> capacity) {
-				q -> arr[start] = temp[start++];
-			}
+		int *temp = (int *)malloc(q -> capacity * sizeof(int));
+		int index = 0,start = q -> front;
+		while(start < q -> capacity) {
+			temp[index++] = q -> arr[start++];
+		}
+
+		start = 0;
+		while(start <= q -> last) {
+			temp[index++] = q -> arr[start++];
+		}
+
+		//copying back the data
+		start = 0;
+		while(start < q -> capacity) {
+			q -> arr[start] = temp[start++];
+		}
 			
 			
 	}
@@ -102,7 +102,6 @@ void pop(struct queue *q) {
 	else {
 		q -> front = (q -> front + 1) % q -> capacity;
 		q -> curr_size--;
-		
 	}
 	
 }
@@ -138,7 +137,7 @@ int back(struct queue *q) {
 
 int main() {
 	
-    struct queue *q;
+    	struct queue *q;
 	q = init();	
 	
 	//interface to play with our queue data structure
