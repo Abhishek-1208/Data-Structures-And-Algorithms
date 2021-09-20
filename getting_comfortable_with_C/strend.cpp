@@ -1,11 +1,11 @@
 /**
  * program to check if the pattern is present at the end of string or not
  * compilation: gcc strend.c
-  Execution: Data-Structures-And-Algorithms/coding/strend.c
+ * Execution: Data-Structures-And-Algorithms/coding/strend.c
  * @Abhishek (1910991168) 
  * 29/07/2021
  * Assignemnt: 3
-*/
+**/
 #include<stdio.h>
 //return length of entered string as return value
 int input_string(char *str)  {
@@ -24,8 +24,8 @@ int input_string(char *str)  {
 
 //helper function to check if the patter is present or not at the end of given string
 int  strend(char *str, int len1, char *pat, int len2) {
-    if(len2 > len1)
-    	return 0;
+	if(len2 > len1)
+		return 0;
     
 	for(int i = len1 -1 , j = len2 - 1; j >= 0; j--, i-- ) {
 		//if any character from end is not equal with character of given string...then the pattern does'nt exist at the end so return false
@@ -35,8 +35,8 @@ int  strend(char *str, int len1, char *pat, int len2) {
 		
 	}	
     
-    //reaching at this point means all character of the given pattern were found at the end of string ..so returning true
-    return 1;
+	//reaching at this point means all character of the given pattern were found at the end of string ..so returning true
+	return 1;
 }
 
 int main() {
