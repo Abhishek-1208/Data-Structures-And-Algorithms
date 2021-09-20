@@ -82,14 +82,14 @@ int input_string(char *str)  {
 }
 // to get operators according to their priority
 int priority(char ch) {
-    // since precedence of '+' & '-' is same
-    if(ch == '+' || ch == '-')
-	return 1;
-    // since precedence of '*' & '/' is same
-    else if(ch == '*' || ch == '/')
-	return 2;
-    else
-        return 3;
+	// since precedence of '+' & '-' is same
+	if(ch == '+' || ch == '-')
+		return 1;
+	// since precedence of '*' & '/' is same
+	else if(ch == '*' || ch == '/')
+		return 2;
+	else
+		return 3;
 }
 
 //function to convert infix to postfix expression
