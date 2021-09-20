@@ -1,0 +1,87 @@
+/**
+ * program to count inversions in an array 
+ * compilation: gcc count_inversions.c
+ * Execution: ./a.out
+ * @Abhishek (1910991168) 
+ * 11/08/2021
+ * Assignemnt: 8
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+// auxillary function to merge the 2 passed sorted intervals
+int merge(int *arr, int l, int mid, int r) {
+	
+   int temp[r - l + 1], index = 0, count = 0;
+   int i = l, j = mid + 1;
+   
+   while(i <= mid && j <= r) {
+   	
+       // this case satisfy that a[j] < a[i] && j > i bcz we will always have j > mid && i <= mid which implies j always > i
+	   if(arr[j] < arr[i]) {
+           count += (mid - i + 1);
+           temp[index++] = arr[j++];
+       }
+       
+       else {
+           temp[index++] = arr[i++];
+       }
+   }
+   //inserting remaining elements of left interval
+   while(i <= mid) {
+       temp[index++] = arr[i++];
+   }
+   //inserting remaining elements of right interval
+   while(j <= r) {
+       temp[index++] = arr[j++];
+   }
+   // copying back the elements in sorted order
+   for(int i = l; i <= r; i++) {
+       arr[i] = temp[i - l];
+   }
+	//returning the count of inversions in this interval
+   return count;
+
+}
+
+//counting inversions while sorting the array using mergesort
+int merge_sort(int *arr, int l, int r) {
+    int count = 0;
+    if(l < r) {
+        int mid = l + (r - l) / 2;
+        //inversions count in left part
+		count += merge_sort(arr, l, mid);
+        //inversions count in right part
+        count += merge_sort(arr, mid + 1, r);
+        //inversions count in current range 
+        count += merge(arr, l, mid, r);
+    }
+    
+    return count;
+
+}
+
+//function to count inversions of array
+int count_inversions(int *arr, int n) {
+    //copying the data first to preserve the order of elements
+	int *copy = (int *) malloc(n * sizeof(int));
+    
+	for(int i = 0; i < n; ++i) {
+        copy[i] = arr[i];
+    }
+
+    return merge_sort(copy, 0, n - 1);
+ 
+}
+int main() {
+    int n;
+    printf("Enter the number of elements: " );
+    scanf("%d", &n);
+    int *arr = (int *)malloc(n * sizeof(int));
+    printf("Enter the elements of array: ");
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    int count = count_inversions(arr, n);
+    printf("count of inversion of given array is %d\n", count); 
+}
