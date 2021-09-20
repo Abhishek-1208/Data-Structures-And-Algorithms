@@ -23,9 +23,9 @@ struct deque {
 
 // to initialize the deque
 struct deque* init() {
-	struct deque *q = (struct deque*) malloc(sizeof(struct deque));
-	q -> start = q -> end = NULL;
-	return q;
+    struct deque *q = (struct deque*) malloc(sizeof(struct deque));
+    q -> start = q -> end = NULL;
+    return q;
 }
 
 // to get new node to store data
@@ -128,13 +128,11 @@ int back(struct deque *head) {
 int main() {
 	
     struct deque *q = init();
-    
-	push_back(&q, 10);
+    push_back(&q, 10);
     push_front(&q, 20);
     
-	printf("front is %d\n", front(q));
-	printf("back is %d\n", back(q));
-    
-	pop_back(&q);
+    printf("front is %d\n", front(q));
+    printf("back is %d\n", back(q));
+    pop_back(&q);
     pop_front(&q);
 }
