@@ -37,22 +37,22 @@ void resize(struct queue *q) {
 	if(q -> front > q -> last) {
 			//copying the content of the queue to temporary array first
 			
-			int *temp = (int *)malloc(q -> capacity * sizeof(int));
-			int index = 0,start = q -> front;
-			while(start < q -> capacity) {
-				temp[index++] = q -> arr[start++];
-			}
+		int *temp = (int *)malloc(q -> capacity * sizeof(int));
+		int index = 0,start = q -> front;
+		while(start < q -> capacity) {
+			temp[index++] = q -> arr[start++];
+		}
 
-			start = 0;
-			while(start <= q -> last) {
-				temp[index++] = q -> arr[start++];
-			}
-			
-			//copying back the data
-			start = 0;
-			while(start < q -> capacity) {
-				q -> arr[start] = temp[start++];
-			}
+		start = 0;
+		while(start <= q -> last) {
+			temp[index++] = q -> arr[start++];
+		}
+
+		//copying back the data
+		start = 0;
+		while(start < q -> capacity) {
+			q -> arr[start] = temp[start++];
+		}
 			
 			
 	}
@@ -133,7 +133,7 @@ int top(struct queue *q) {
 
 int main() {
 	
-    struct queue *q;
+    	struct queue *q;
 	q = init();	
 	
 	//interface to play with our queue data structure
